@@ -4,7 +4,7 @@
 An application that enables employees to generate random passwords based on criteria that they’ve selected.
 
 ## Links
-* Github content of Jean's homepage website
+* [Github content of Password generator website](https://github.com/JeanSuw/madman-password)
 * Password Page
 
 ## Useage
@@ -13,5 +13,8 @@ An application that enables employees to generate random passwords based on crit
 ## Acknowledgement
 In order to make this website functional, here are the links I searched.
 
-* [Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
-* [Java Script Cheatsheet](https://htmlcheatsheet.com/js/)
+* [JavaScript Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
+* [JavaScript Cheatsheet](https://htmlcheatsheet.com/js/)
+* [JavaScript String search()](https://www.w3schools.com/jsref/jsref_search.asp)
+* [JavaScript String indexOf()](https://www.w3schools.com/jsref/jsref_indexof.asp)
+* [JavaScript Window prompt()](https://www.w3schools.com/jsref/met_win_prompt.asp)
