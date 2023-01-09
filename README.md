@@ -18,3 +18,4 @@ In order to make this website functional, here are the links I searched.
 * [JavaScript String search()](https://www.w3schools.com/jsref/jsref_search.asp)
 * [JavaScript String indexOf()](https://www.w3schools.com/jsref/jsref_indexof.asp)
 * [JavaScript Window prompt()](https://www.w3schools.com/jsref/met_win_prompt.asp)
+* [JavaScript Naming Convension](https://www.syncfusion.com/blogs/post/10-javascript-naming-conventions-every-developer-should-know.aspx)
