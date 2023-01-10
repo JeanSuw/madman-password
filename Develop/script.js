@@ -17,7 +17,7 @@ function checkCharLimit(numberOfChar){
 function askUserForCharLength(){
   var numberOfChar = prompt("How long do you want your password will be? (Character limits: 8-128 characters)");
   var isWithinCharLimit = checkCharLimit(numberOfChar);
-  while (isWithinCharLimit != true) {
+  while (isWithinCharLimit !== true) {
     numberOfChar = prompt("Hey! Hey! It has to be within 8-128 characters! Try Again! How long do you want your password will be?");
     isWithinCharLimit = checkCharLimit(numberOfChar);
     // Add if statement for cancel button
@@ -29,10 +29,11 @@ function generatePassword (){
   askUserForCharLength();
   
   // prompted for character types to include in the password
-  var answer = prompt("Do you want to include lower case?");
-  var answer = prompt("Do you want to include upper case?");
-  var answer = prompt("Do you want to include numbers?");
-  var answer = prompt("Do you want to include special characters?");
+  var answer = prompt("Do you want to include lower case? (y or n)");
+
+  var answer = prompt("Do you want to include upper case? (y or n)");
+  var answer = prompt("Do you want to include numbers? (y or n)");
+  var answer = prompt("Do you want to include special characters? (y or n)");
 
 
 
