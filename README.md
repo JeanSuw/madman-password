@@ -5,7 +5,7 @@ An application that enables employees to generate random passwords based on crit
 
 ## Links
 * [Github content of Password generator website](https://github.com/JeanSuw/madman-password)
-* Password Page
+* [Password Page](https://jeansuw.github.io/madman-password/)
 
 ## Useage
 
