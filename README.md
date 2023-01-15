@@ -8,7 +8,13 @@ An application that enables employees to generate random passwords based on crit
 * [Password Page](https://jeansuw.github.io/madman-password/)
 
 ## Useage
+First you press the red button labels "Generated Password". You must answer all the prompts. The first thing it ask you is the length of your password. Your input should be between 8 to 128, otherwise it will ask you again for the length of your password. Next it will ask you whether or not to include lowercase, uppercase, numeric, and/or special characters as shown in this screenshot below.
 
+![WebsiteScreenshot](./Develop/Password-Generator-Screenshot.png)
+
+This image showed a new password. The length was 15 characters. The user chose to exclude lowercase letters.
+
+Keep in mind that if you don't include anything, the default password will be randomly generated lowercase letters. The password length will be the same as user responsed.
 
 ## Acknowledgement
 In order to make this website functional, here are the links I searched.
