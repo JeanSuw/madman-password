@@ -6,12 +6,22 @@ var lowercaseChar, uppercaseChar, numberChar, specialChar;
 lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 numberChar = "0123456789";
-specialChar = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~"; 
+specialChar = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 //Note: Did not include " and \ symbols in specialChar, lest js will consider it as syntax error.
 
 // a list checking if the number is within character limits (8 - 128)
 function checkCharLimit(numberOfChar){
   return (numberOfChar >=8) && (numberOfChar < 128);
+}
+
+function isAtLeastOneType (numberOfChar, answerToLowerCase, answerToUpperCase, answerToNumbers, answerToSpecials){
+  if (answerToLowerCase.toLowerCase() === "n" ||
+      answerToUpperCase.toLowerCase() === "n" ||
+      answerToNumbers.toLowerCase() === "n" ||
+      answerToSpecials.toLowerCase() === "n"){
+    // Set lowercase as result
+    return 
+  }
 }
 
 function askUserForCharLength(){
@@ -20,20 +30,24 @@ function askUserForCharLength(){
   while (isWithinCharLimit !== true) {
     numberOfChar = prompt("Hey! Hey! It has to be within 8-128 characters! Try Again! How long do you want your password will be?");
     isWithinCharLimit = checkCharLimit(numberOfChar);
+    if (isWithinCharLimit === true){
+      break;
+    }
     // Add if statement for cancel button
   }
+  return numberOfChar;
 }
 
 function generatePassword (){
   // prompted for length of the password
-  askUserForCharLength();
+  var userInputNumChar = askUserForCharLength();
   
   // prompted for character types to include in the password
-  var answer = prompt("Do you want to include lower case? (y or n)");
+  var answerToLowerCase = prompt("Do you want to include lower case? (y or n)");
 
-  var answer = prompt("Do you want to include upper case? (y or n)");
-  var answer = prompt("Do you want to include numbers? (y or n)");
-  var answer = prompt("Do you want to include special characters? (y or n)");
+  var answerToUpperCase = prompt("Do you want to include upper case? (y or n)");
+  var answerToNumbers = prompt("Do you want to include numbers? (y or n)");
+  var answerToSpecials = prompt("Do you want to include special characters? (y or n)");
 
 
 
