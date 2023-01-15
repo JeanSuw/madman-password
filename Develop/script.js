@@ -13,6 +13,11 @@ function checkCharLimit(numberOfChar){
   return (numberOfChar >=8) && (numberOfChar < 128);
 }
 
+/**
+ * Once the user click generate password, a prompt will pop up and ask for character limit for their password.
+ * If the user enter numbers that is not within 8 to 128, then it will ask you continusly till you pick within given length.
+ * @returns numberOfChar as user response to how many characters they want in their new password
+ */
 function askUserForCharLength(){
   var numberOfChar = prompt("How long do you want your password will be? (Character limits: 8-128 characters)");
   var isWithinCharLimit = checkCharLimit(numberOfChar);
@@ -33,12 +38,8 @@ function askUserForCharLength(){
 function askQuestions(numberOfChar){
   var expandedList = defaultPassword = "";
   var countNo = 0; // Counting numbers of no's to each question
-  var question1 = "Do you want to include lower case?";
-  var question2 = "Do you want to include upper case?";
-  var question3 = "Do you want to include numbers?";
-  var question4 = "Do you want to include special characters?";
 
-  var userInput = confirm(question1);
+  var userInput = confirm("Do you want to include lower case?");
   if (userInput == true){
     expandedList = expandedList + lowercaseChar;
   }else{
@@ -46,7 +47,7 @@ function askQuestions(numberOfChar){
     console.log("Lower cases are not included");
   }
 
-  var userInput = confirm(question2);
+  var userInput = confirm("Do you want to include upper case?");
   if (userInput == true){
     expandedList = expandedList + uppercaseChar;
   }else{
@@ -54,7 +55,7 @@ function askQuestions(numberOfChar){
     console.log("Upper cases are not included");
   }
 
-  var userInput = confirm(question3);
+  var userInput = confirm("Do you want to include numbers?");
   if (userInput == true){
     expandedList = expandedList + numberChar;
   }else{
@@ -62,7 +63,7 @@ function askQuestions(numberOfChar){
     console.log("Numbers are not included");
   }
 
-  var userInput = confirm(question4);
+  var userInput = confirm("Do you want to include special characters?");
   if (userInput == true){
     expandedList = expandedList + specialChar;
   }else{
@@ -76,6 +77,8 @@ function askQuestions(numberOfChar){
     for (var j = 0; j < numberOfChar; j++){
       defaultPassword += lowercaseChar.charAt(Math.floor(Math.random() * 26));
     }
+
+  // Otherwise, the passwords will generates according to users pressing ok buttons to certain questions
   }else{
     for (var j = 0; j < numberOfChar; j++){
       defaultPassword += expandedList.charAt(Math.floor(Math.random() * expandedList.length));
@@ -84,6 +87,7 @@ function askQuestions(numberOfChar){
   return defaultPassword;
 }
 
+// Generate Password by having users interact with the prompts and messages
 function generatePassword (){
   var answersToFeatures = [];
   var newPassword = "";
@@ -96,7 +100,6 @@ function generatePassword (){
   
   return newPassword;
 }
-
 
 // Write password to the #password input
 function writePassword() {
