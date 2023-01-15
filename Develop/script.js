@@ -7,7 +7,6 @@ lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 numberChar = "0123456789";
 specialChar = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-//Note: Did not include " and \ symbols in specialChar, lest js will consider it as syntax error.
 
 // a list checking if the number is within character limits (8 - 128)
 function checkCharLimit(numberOfChar){
@@ -28,10 +27,12 @@ function askUserForCharLength(){
   return numberOfChar;
 }
 
+/** 
+ * Let users to press "ok" or "cancel" whether to include lowercase, uppercase, numeric, and/or special characters.
+*/
 function askQuestions(numberOfChar){
-  var expandedList = "";
-  var defaultPassword = "";
-  var countNo = 0;
+  var expandedList = defaultPassword = "";
+  var countNo = 0; // Counting numbers of no's to each question
   var question1 = "Do you want to include lower case?";
   var question2 = "Do you want to include upper case?";
   var question3 = "Do you want to include numbers?";

@@ -25,4 +25,6 @@ In order to make this website functional, here are the links I searched.
 * [JavaScript Push, Pop, Shift and Unshift Array Methods](https://www.hackinbits.com/articles/js/push-pop-shift-and-unshift-array-methods-in-javascript)
 * [JavaScript add strings](https://zetcode.com/javascript/add-string/#:~:text=The%20easiest%20way%20of%20concatenating,that%20the%20operator%20is%20overloaded.&text=let%20a%20%3D%20'old'%3B,log(c)%3B)
 * [Compare Two Strings in JavaScript](https://www.scaler.com/topics/compare-two-strings-in-javascript/)
-* []()
+* [JavaScript Window confirm() Method](https://www.geeksforgeeks.org/javascript-window-confirm-method/)
+* [JavaScript Assign Multiple Variables to the Same Value](https://livingwithcode.com/assign-multiple-variables-to-the-same-value-in-javascript/#:~:text=If%20you%20want%20to%20assign,the%20same%20line%20of%20code.)
+* [JavaScript Window confirm()](https://www.w3schools.com/jsref/met_win_confirm.asp)
