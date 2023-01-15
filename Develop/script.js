@@ -14,42 +14,6 @@ function checkCharLimit(numberOfChar){
   return (numberOfChar >=8) && (numberOfChar < 128);
 }
 
-function generateDefaultPassword (numberOfChar, answerToLowerCase, answerToUpperCase, answerToNumbers, answerToSpecials){
-  var defaultPassword = "";
-  var expandedList = "";
-  if (answerToLowerCase.toLowerCase() === "n" &&
-      answerToUpperCase.toLowerCase() === "n" &&
-      answerToNumbers.toLowerCase() === "n" &&
-      answerToSpecials.toLowerCase() === "n"){
-    // Set lowercase as result
-    for(var i = 0; i < numberOfChar; i++){
-      defaultPassword += lowercaseChar.charAt(Math.floor(Math.random() * lowercaseChar.length));
-    }
-    return defaultPassword;
-  }else{
-    if(answerToLowerCase.toLowerCase() === "y"){
-      expandedList = expandedList + lowercaseChar;
-    }
-    if(answerToUpperCase.toLowerCase() === "y"){
-      expandedList = expandedList + uppercaseChar;
-    }
-    if(answerToNumbers.toLowerCase() === "y"){
-      expandedList = expandedList + numberChar;
-    }
-    if(answerToSpecials.toLowerCase() === "y"){
-      expandedList = expandedList + specialChar;
-    }
-    for (var j = 0; j < numberOfChar; j++){
-      defaultPassword += expandedList.charAt(Math.floor(Math.random() * expandedList.length));
-    }
-  }
-  return defaultPassword;
-}
-
-function isNotYes (userInput){
-  return userInput.toLowerCase() !== "y";
-}
-
 function askUserForCharLength(){
   var numberOfChar = prompt("How long do you want your password will be? (Character limits: 8-128 characters)");
   var isWithinCharLimit = checkCharLimit(numberOfChar);
@@ -64,44 +28,74 @@ function askUserForCharLength(){
   return numberOfChar;
 }
 
+function askQuestions(numberOfChar){
+  var expandedList = "";
+  var defaultPassword = "";
+  var countNo = 0;
+  var question1 = "Do you want to include lower case?";
+  var question2 = "Do you want to include upper case?";
+  var question3 = "Do you want to include numbers?";
+  var question4 = "Do you want to include special characters?";
+
+  var userInput = confirm(question1);
+  if (userInput == true){
+    expandedList = expandedList + lowercaseChar;
+  }else{
+    countNo++;
+    console.log("Lower cases are not included");
+  }
+
+  var userInput = confirm(question2);
+  if (userInput == true){
+    expandedList = expandedList + uppercaseChar;
+  }else{
+    countNo++;
+    console.log("Upper cases are not included");
+  }
+
+  var userInput = confirm(question3);
+  if (userInput == true){
+    expandedList = expandedList + numberChar;
+  }else{
+    countNo++;
+    console.log("Numbers are not included");
+  }
+
+  var userInput = confirm(question4);
+  if (userInput == true){
+    expandedList = expandedList + specialChar;
+  }else{
+    countNo++;
+    console.log("special characters are not included");
+  }
+
+  // If the user click cancel to all of the options, the default password will set to lower case
+  if (countNo === 4){
+    console.log(countNo);
+    for (var j = 0; j < numberOfChar; j++){
+      defaultPassword += lowercaseChar.charAt(Math.floor(Math.random() * 26));
+    }
+  }else{
+    for (var j = 0; j < numberOfChar; j++){
+      defaultPassword += expandedList.charAt(Math.floor(Math.random() * expandedList.length));
+    }
+  }
+  return defaultPassword;
+}
+
 function generatePassword (){
-  // prompted for length of the password
   var answersToFeatures = [];
   var newPassword = "";
-  
+
+  // prompted for length of the password
   var userInputNumChar = askUserForCharLength();
-  // prompted for character types to include in the password
-  var answerToLowerCase = prompt("Do you want to include lower case? (y or n)");
-  if (isNotYes){
-    answersToFeatures.push("n");
-  }else{
-    answersToFeatures.push(answerToLowerCase.toLowerCase());
-  }
-
-  var answerToUpperCase = prompt("Do you want to include upper case? (y or n)");
-  if (isNotYes){
-    answersToFeatures.push("n");
-  }else{
-    answersToFeatures.push(answerToUpperCase.toLowerCase());
-  }
-
-  var answerToNumbers = prompt("Do you want to include numbers? (y or n)");
-  if (isNotYes){
-    answersToFeatures.push("n");
-  }else{
-    answersToFeatures.push(answerToNumbers.toLowerCase());
-  }
-
-  var answerToSpecials = prompt("Do you want to include special characters? (y or n)");
-  if (isNotYes){
-    answersToFeatures.push("n");
-  }else{
-    answersToFeatures.push(answerToSpecials.toLowerCase());
-  }
-  newPassword = generateDefaultPassword(answersToFeatures[0],answersToFeatures[1],answersToFeatures[2],answersToFeatures[3]);
-
+  
+  // Asking users what type of characters will be include in their new password
+  newPassword = askQuestions(userInputNumChar);
+  
   return newPassword;
 }
+
 
 // Write password to the #password input
 function writePassword() {
