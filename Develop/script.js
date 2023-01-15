@@ -14,16 +14,40 @@ function checkCharLimit(numberOfChar){
   return (numberOfChar >=8) && (numberOfChar < 128);
 }
 
-function isAtLeastOneType (numberOfChar, answerToLowerCase, answerToUpperCase, answerToNumbers, answerToSpecials){
+function generateDefaultPassword (numberOfChar, answerToLowerCase, answerToUpperCase, answerToNumbers, answerToSpecials){
   var defaultPassword = "";
-  if (answerToLowerCase.toLowerCase() === "n" ||
-      answerToUpperCase.toLowerCase() === "n" ||
-      answerToNumbers.toLowerCase() === "n" ||
+  var expandedList = "";
+  if (answerToLowerCase.toLowerCase() === "n" &&
+      answerToUpperCase.toLowerCase() === "n" &&
+      answerToNumbers.toLowerCase() === "n" &&
       answerToSpecials.toLowerCase() === "n"){
     // Set lowercase as result
-    for(var i = 0; i < numberOfChar; i++)
-    defaultPassword += characters.charAt(Math.floor(Math.random() * lowercaseChar));
+    for(var i = 0; i < numberOfChar; i++){
+      defaultPassword += lowercaseChar.charAt(Math.floor(Math.random() * lowercaseChar.length));
+    }
+    return defaultPassword;
+  }else{
+    if(answerToLowerCase.toLowerCase() === "y"){
+      expandedList = expandedList + lowercaseChar;
+    }
+    if(answerToUpperCase.toLowerCase() === "y"){
+      expandedList = expandedList + uppercaseChar;
+    }
+    if(answerToNumbers.toLowerCase() === "y"){
+      expandedList = expandedList + numberChar;
+    }
+    if(answerToSpecials.toLowerCase() === "y"){
+      expandedList = expandedList + specialChar;
+    }
+    for (var j = 0; j < numberOfChar; j++){
+      defaultPassword += expandedList.charAt(Math.floor(Math.random() * expandedList.length));
+    }
   }
+  return defaultPassword;
+}
+
+function isNotYes (userInput){
+  return userInput.toLowerCase() !== "y";
 }
 
 function askUserForCharLength(){
@@ -42,27 +66,48 @@ function askUserForCharLength(){
 
 function generatePassword (){
   // prompted for length of the password
-  var userInputNumChar = askUserForCharLength();
+  var answersToFeatures = [];
+  var newPassword = "";
   
+  var userInputNumChar = askUserForCharLength();
   // prompted for character types to include in the password
   var answerToLowerCase = prompt("Do you want to include lower case? (y or n)");
+  if (isNotYes){
+    answersToFeatures.push("n");
+  }else{
+    answersToFeatures.push(answerToLowerCase.toLowerCase());
+  }
 
   var answerToUpperCase = prompt("Do you want to include upper case? (y or n)");
+  if (isNotYes){
+    answersToFeatures.push("n");
+  }else{
+    answersToFeatures.push(answerToUpperCase.toLowerCase());
+  }
+
   var answerToNumbers = prompt("Do you want to include numbers? (y or n)");
+  if (isNotYes){
+    answersToFeatures.push("n");
+  }else{
+    answersToFeatures.push(answerToNumbers.toLowerCase());
+  }
+
   var answerToSpecials = prompt("Do you want to include special characters? (y or n)");
+  if (isNotYes){
+    answersToFeatures.push("n");
+  }else{
+    answersToFeatures.push(answerToSpecials.toLowerCase());
+  }
+  newPassword = generateDefaultPassword(answersToFeatures[0],answersToFeatures[1],answersToFeatures[2],answersToFeatures[3]);
 
-
-
-  return "The Password!!!!"
+  return newPassword;
 }
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
