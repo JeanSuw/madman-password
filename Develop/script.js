@@ -15,12 +15,14 @@ function checkCharLimit(numberOfChar){
 }
 
 function isAtLeastOneType (numberOfChar, answerToLowerCase, answerToUpperCase, answerToNumbers, answerToSpecials){
+  var defaultPassword = "";
   if (answerToLowerCase.toLowerCase() === "n" ||
       answerToUpperCase.toLowerCase() === "n" ||
       answerToNumbers.toLowerCase() === "n" ||
       answerToSpecials.toLowerCase() === "n"){
     // Set lowercase as result
-    return 
+    for(var i = 0; i < numberOfChar; i++)
+    defaultPassword += characters.charAt(Math.floor(Math.random() * lowercaseChar));
   }
 }
 
