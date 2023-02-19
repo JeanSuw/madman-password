@@ -14,7 +14,7 @@ First you press the red button labels "Generated Password". You must answer all 
 
 This image showed a new password. The length was 15 characters. The user chose to exclude lowercase letters.
 
-Keep in mind that if you don't include anything, the default password will be randomly generated lowercase letters. The password length will be the same as user responsed.
+Keep in mind that if you cancel the criteria, it will start over from the beginning.
 
 ## Acknowledgement
 In order to make this website functional, here are the links I searched.

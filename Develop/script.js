@@ -1,4 +1,3 @@
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
 var lowercaseChar, uppercaseChar, numberChar, specialChar;
@@ -21,15 +20,12 @@ function checkCharLimit(numberOfChar){
 function askUserForCharLength(){
   var numberOfChar = prompt("How long do you want your password will be? (Character limits: 8-128 characters)");
   var isWithinCharLimit = checkCharLimit(numberOfChar);
-  while (isWithinCharLimit !== true) {
-    numberOfChar = prompt("Hey! Hey! It has to be within 8-128 characters! Try Again! How long do you want your password will be?");
-    isWithinCharLimit = checkCharLimit(numberOfChar);
-    if (isWithinCharLimit === true){
-      break;
-    }
-    // Add if statement for cancel button
+  if (isWithinCharLimit !== true){
+    alert ("Must be within character limit, Try again");
+    return false;
+  }else{
+    return numberOfChar;
   }
-  return numberOfChar;
 }
 
 /** 
@@ -74,9 +70,7 @@ function askQuestions(numberOfChar){
   // If the user click cancel to all of the options, the default password will set to lower case
   if (countNo === 4){
     console.log(countNo);
-    for (var j = 0; j < numberOfChar; j++){
-      defaultPassword += lowercaseChar.charAt(Math.floor(Math.random() * 26));
-    }
+    defaultPassword = alert("I'm starting over. Please choose a criteria.");
 
   // Otherwise, the passwords will generates according to users pressing ok buttons to certain questions
   }else{
@@ -89,15 +83,17 @@ function askQuestions(numberOfChar){
 
 // Generate Password by having users interact with the prompts and messages
 function generatePassword (){
-  var answersToFeatures = [];
   var newPassword = "";
 
   // prompted for length of the password
   var userInputNumChar = askUserForCharLength();
-  
-  // Asking users what type of characters will be include in their new password
-  newPassword = askQuestions(userInputNumChar);
-  
+  if (userInputNumChar === false){
+    alert("You may click the generate button to try again");
+    generateBtn.addEventListener("click", writePassword);
+  }else{
+    // Asking users what type of characters will be include in their new password
+    newPassword = askQuestions(userInputNumChar);
+  }
   return newPassword;
 }
 
@@ -106,6 +102,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
+  
 }
 
 // Add event listener to generate button
